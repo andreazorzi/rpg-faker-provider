@@ -87,13 +87,13 @@ trait CharacterName
             ],
             'half-orc' => [
                 'male' => [
-                    'Deneh, Feng, Gell, Henk, Holg, Imsh',
-                    'Kelh, Krusk, Mhurren, Ront, Shump, Thokk',
+                    'Deneh', 'Feng', 'Gell', 'Henk', 'Holg', 'Imsh',
+                    'Kelh', 'Krusk', 'Mhurren', 'Ront', 'Shump', 'Thokk',
                 ],
                 'female' => [
-                    'Baggi, Emen, Engong, Kansif',
-                    'Myev, Neega, Ovak, Ownka, Shaulha, Sulha, Vola',
-                    'Volen, Yevelda',
+                    'Baggi', 'Emen', 'Engong', 'Kansif',
+                    'Myev', 'Neega', 'Ovak', 'Ownka', 'Shaulha', 'Sulha', 'Vola',
+                    'Volen', 'Yevelda',
                 ]
             ],
             'human' => [

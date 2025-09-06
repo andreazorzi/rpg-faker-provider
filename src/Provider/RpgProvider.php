@@ -34,7 +34,7 @@ class RpgProvider extends Base
         return $this->generator->randomElement($names);
     }
     
-    public function characterLastName($race = null): string{
+    public function characterLastName($race = null): ?string{
         $surnames = [];
         
         foreach(self::getSurname() as $race_key => $race_surnames){
@@ -47,16 +47,16 @@ class RpgProvider extends Base
     }
     
     public function characterName($race = null, $type = null): string{
-        return $this->characterFirstName($race, $type).' '.$this->characterLastName($race);
+        return trim($this->characterFirstName($race, $type).' '.$this->characterLastName($race) ?? '');
     }
     
-    private function getLocaleProviderClass(string $type): string{
-        $className = "FakerRpg\\Provider\\{$this->locale}\\{$type}";
+    // private function getLocaleProviderClass(string $type): string{
+    //     $className = "FakerRpg\\Provider\\{$this->locale}\\{$type}";
         
-        if (!class_exists($className)) {
-            throw new Exception("Locale {$this->locale} not supported", 1);
-        }
+    //     if (!class_exists($className)) {
+    //         throw new Exception("Locale {$this->locale} not supported", 1);
+    //     }
         
-        return $className;
-    }
+    //     return $className;
+    // }
 }
