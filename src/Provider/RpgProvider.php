@@ -4,9 +4,12 @@ namespace FakerRpg\Provider;
 
 use Exception;
 use Faker\Provider\Base;
+use FakerRpg\Traits\CharacterName;
 
 class RpgProvider extends Base
 {
+    use CharacterName;
+    
     private $locale;
     
     public function __construct($generator, $locale = null){
@@ -16,11 +19,9 @@ class RpgProvider extends Base
     }
     
     public function characterFirstName($race = null, $type = null): string{
-        $providerClass = $this->getLocaleProviderClass('CharacterName');
-        
         $names = [];
         
-        foreach($providerClass::getNames() as $race_key => $race_names){
+        foreach(self::getNames() as $race_key => $race_names){
             if(!is_null($race) && $race != $race_key) continue;
             
             foreach($race_names ?? [] as $type_key => $type_names){
@@ -34,11 +35,9 @@ class RpgProvider extends Base
     }
     
     public function characterLastName($race = null): string{
-        $providerClass = $this->getLocaleProviderClass('CharacterName');
-        
         $surnames = [];
         
-        foreach($providerClass::getSurname() as $race_key => $race_surnames){
+        foreach(self::getSurname() as $race_key => $race_surnames){
             if(!is_null($race) && $race != $race_key) continue;
             
             $surnames = array_merge($surnames, $race_surnames);

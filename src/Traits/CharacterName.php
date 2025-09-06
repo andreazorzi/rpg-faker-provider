@@ -1,11 +1,10 @@
 <?php
 
-namespace FakerRpg\Provider\it_IT;
+namespace FakerRpg\Traits;
 
-class CharacterName
+trait CharacterName
 {
-    public static function getNames(): array
-    {
+    public static function getNames(): array{
         $names = [
             'dragonborn' => [
                 'child' => [
@@ -136,8 +135,7 @@ class CharacterName
         return $names;
     }
     
-    public static function getSurname(): array
-    {
+    public static function getSurname(): array{
         $surnames = [
             'dragonborn' => [
                 'Clethtinthiallor', 'Daardendrian', 'Delmirev',
