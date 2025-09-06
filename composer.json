@@ -1,0 +1,18 @@
+{
+    "name": "andreazorzi/rpg-faker-provider",
+    "description": "FakerPHP provider for RPG character generation with multi-language support",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Andreazorzi\\RpgFakerProvider\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andrea Zorzi",
+            "email": "info@zorziandrea.com"
+        }
+    ],
+    "require": {}
+}
