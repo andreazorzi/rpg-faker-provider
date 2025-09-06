@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Andreazorzi\\RpgFakerProvider\\": "src/"
+            "FakerRpg\\": "src/"
         }
     },
     "authors": [
@@ -14,5 +14,7 @@
             "email": "info@zorziandrea.com"
         }
     ],
-    "require": {}
+    "require": {
+        "fakerphp/faker": "^1.24"
+    }
 }
