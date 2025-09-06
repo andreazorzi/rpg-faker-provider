@@ -2,10 +2,20 @@
 
 namespace FakerRpg\Provider;
 
+use Exception;
 use Faker\Provider\Base;
 
 class RpgProvider extends Base
 {
+    private $locale;
+    
+    public function __construct($generator, $locale = null)
+    {
+        parent::__construct($generator);
+        
+        $this->locale = $locale;
+    }
+    
     /**
      * Generate a random character name based on locale
      */
@@ -20,11 +30,10 @@ class RpgProvider extends Base
      */
     private function getLocaleProviderClass(string $type): string
     {
-        $locale = $this->generator->getDefaultTimezone() ?? 'en_US';
-        $className = "FakerRpg\\Provider\\{$locale}\\{$type}";
+        $className = "FakerRpg\\Provider\\{$this->locale}\\{$type}";
         
         if (!class_exists($className)) {
-            $className = "FakerRpg\\Provider\\en_US\\{$type}";
+            throw new Exception("Locale {$this->locale} not supported", 1);
         }
         
         return $className;
