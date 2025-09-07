@@ -33,7 +33,7 @@ trait CharacterName
                 'female' => [
                     'Amber', 'Artin', 'Audhild', 'Bardryn',
                     'Oagnal', 'Oiesa', 'Eldeth', 'Falkrunn', 'Finellen', 'Gunnloda',
-                    'Gurdis', 'Helja', 'Hlin', 'Kathra', 'Kristryd', 'lide', 'Liftrasa',
+                    'Gurdis', 'Helja', 'Hlin', 'Kathra', 'Kristryd', 'Lide', 'Liftrasa',
                     'Mardred', 'Riswynn', 'Sannl', 'Torbera', 'Torgga', 'Vistra',
                 ]
             ],
@@ -63,7 +63,7 @@ trait CharacterName
                 'male' => [
                     'Alston', 'Alvyn', 'Boddynock', 'Brocc', 'Burgell',
                     'Dimble', 'Eldon', 'Erky', 'Fonkin', 'Frug', 'Gerbo', 'Gimble',
-                    'Glim,Jebeddo', 'Kellen', 'Namfoodle', 'Orryn', 'Roondar',
+                    'Glim', 'Jebeddo', 'Kellen', 'Namfoodle', 'Orryn', 'Roondar',
                     'Seebo', 'Sindri', 'Warryn', 'Wrenn', 'Zook',
                 ],
                 'female' => [
@@ -103,25 +103,25 @@ trait CharacterName
                     'Bar', 'Fadei', 'Glar', 'Grigor', 'Igan', 'Ivor', 'Kosef', 'MivaI', 'Orei', 'Pavel', 'Sergor',
                     'Ander', 'Blath', 'Bran', 'Frath', 'Geth', 'Lander', 'Luth', 'Malcer', 'Stor', 'Taman', 'Urth',
                     'Aoth', 'Bareris', 'Ehput-Ki', 'Kethoth', 'Mumed', 'Ramas', 'So-Kehur', 'Thazar-De', 'Urhur',
-                    'Borivik', 'Faurgar,jandar', 'Kanithar', 'Madislak', 'Ralmevik', 'Shaumar', 'Vladislak',
-                    'An', 'Chen', 'Chi', 'Fai', 'jiang', 'Jun', 'Lian', 'Long', 'Meng', 'On', 'Shan', 'Shui', 'Wen',
+                    'Borivik', 'Faurgar', 'Jandar', 'Kanithar', 'Madislak', 'Ralmevik', 'Shaumar', 'Vladislak',
+                    'An', 'Chen', 'Chi', 'Fai', 'Jiang', 'Jun', 'Lian', 'Long', 'Meng', 'On', 'Shan', 'Shui', 'Wen',
                     'Anton', 'Diero. Marcon', 'Pieron', 'Rimardo', 'Romero', 'Salazar', 'Umbero',
                 ],
                 'female' => [
                     'Alala', 'Ceidil. Hama', 'Jasmal', 'Meilil', 'Seipora', 'Yasheira', 'Zasheida',
-                    'Arveene', 'Esvele', 'jhessail', 'Kerri', 'Lureene', 'Miri', 'Rowan', 'Shandri', 'Tessele',
+                    'Arveene', 'Esvele', 'Jhessail', 'Kerri', 'Lureene', 'Miri', 'Rowan', 'Shandri', 'Tessele',
                     'Alethra', 'Kara', 'Katernin', 'Mara', 'Natali', 'Olma', 'Tana', 'Zora',
                     'Amafrey', 'Betha', 'Cefrey', 'Kethra', 'Mara', 'Olga', 'Silifrey', 'Westra',
                     'Arizima', 'Chathi', 'Nephis', 'Nulara', 'Murithi', 'Sefris', 'Thola', 'Umara', 'Zolis',
                     'Fyevarra', 'Hulmarra', 'Immith', 'Imzel', 'Navarra', 'Shevarra', 'Tammith', 'Yuldra',
-                    'Bai', 'Chao,jia', 'Lei', 'Mei', 'Qiao', 'Shui', 'Tai',
-                    'Balama', 'Dona', 'Faila,jalana', 'Luisa', 'Marta', 'Quara', 'Selise', 'Vonda',
+                    'Bai', 'Chao', 'Jia', 'Lei', 'Mei', 'Qiao', 'Shui', 'Tai',
+                    'Balama', 'Dona', 'Faila', 'Jalana', 'Luisa', 'Marta', 'Quara', 'Selise', 'Vonda',
                 ]
             ],
             'tiefling' => [
                 'male' => [
                     'Akmenos', 'Amnon', 'Barakas',
-                    'Damakos', 'Ekemon', 'lados', 'Kairon', 'Leucis', 'Melech',
+                    'Damakos', 'Ekemon', 'Lados', 'Kairon', 'Leucis', 'Melech',
                     'Mordai', 'Morthos', 'Pelaios', 'Skamos', 'Therai',
                 ],
                 'female' => [
@@ -167,7 +167,7 @@ trait CharacterName
                 'Tosscobble', 'Underbough',
             ],
             'human' => [
-                'Basha', 'Dumein,Jassan', 'Khalid', 'Moslana', 'Pashar', 'Rein',
+                'Basha', 'Dumein', 'Jassan', 'Khalid', 'Moslana', 'Pashar', 'Rein',
                 'Amblecrown', 'Buckman', 'Dundragon', 'Evenwood', 'Greycastle', 'Tallstag',
                 'Bersk', 'Chernin', 'Dotsk', 'Kulenov', 'Marsk', 'Nemetsk', 'Shemov', 'Starag',
                 'Brightwood', 'Helder', 'Hornraven', 'Lackman', 'Stormwind', 'Windrivver',

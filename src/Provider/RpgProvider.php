@@ -21,6 +21,10 @@ class RpgProvider extends Base
     public function characterFirstName($race = null, $type = null): string{
         $names = [];
         
+        if($race == "half-elf"){
+            $race = $this->generator->randomElement(["elf", "human"]);
+        }
+        
         foreach(self::getNames() as $race_key => $race_names){
             if(!is_null($race) && $race != $race_key) continue;
             
@@ -37,6 +41,10 @@ class RpgProvider extends Base
     public function characterLastName($race = null): ?string{
         $surnames = [];
         
+        if($race == "half-elf"){
+            $race = $this->generator->randomElement(["elf", "human"]);
+        }
+        
         foreach(self::getSurname() as $race_key => $race_surnames){
             if(!is_null($race) && $race != $race_key) continue;
             
@@ -50,8 +58,10 @@ class RpgProvider extends Base
         return trim($this->characterFirstName($race, $type).' '.$this->characterLastName($race) ?? '');
     }
     
-    public function characterRace(): string{
+    public function characterRace($race = null): string{
         $class = $this->getLocaleProviderClass("CharacterRace");
+        
+        if(!is_null($race)) return $class::getRaces()[$race];
         
         return $this->generator->randomElement($class::getRaces());
     }
@@ -60,6 +70,16 @@ class RpgProvider extends Base
         $class = $this->getLocaleProviderClass("CharacterRace");
         
         return $this->generator->randomElement(array_keys($class::getRaces()));
+    }
+    
+    public function character($race = null, $type = null): array{
+        $race ??= $this->characterRaceKey();
+        
+        return [
+            'name' => $this->characterName($race, $type),
+            'race_key' => $race,
+            'race' => $this->characterRace($race),
+        ];
     }
     
     private function getLocaleProviderClass(string $type): string{
