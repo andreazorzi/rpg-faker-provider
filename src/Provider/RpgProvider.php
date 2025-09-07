@@ -50,13 +50,25 @@ class RpgProvider extends Base
         return trim($this->characterFirstName($race, $type).' '.$this->characterLastName($race) ?? '');
     }
     
-    // private function getLocaleProviderClass(string $type): string{
-    //     $className = "FakerRpg\\Provider\\{$this->locale}\\{$type}";
+    public function characterRace(): string{
+        $class = $this->getLocaleProviderClass("CharacterRace");
         
-    //     if (!class_exists($className)) {
-    //         throw new Exception("Locale {$this->locale} not supported", 1);
-    //     }
+        return $this->generator->randomElement($class::getRaces());
+    }
+    
+    public function characterRaceKey(): string{
+        $class = $this->getLocaleProviderClass("CharacterRace");
         
-    //     return $className;
-    // }
+        return $this->generator->randomElement(array_keys($class::getRaces()));
+    }
+    
+    private function getLocaleProviderClass(string $type): string{
+        $className = "FakerRpg\\Provider\\{$this->locale}\\{$type}";
+        
+        if (!class_exists($className)) {
+            throw new Exception("Locale {$this->locale} not supported", 1);
+        }
+        
+        return $className;
+    }
 }
