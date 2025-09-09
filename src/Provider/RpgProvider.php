@@ -32,6 +32,9 @@ class RpgProvider extends Base
         'survival',
     ];
     const ALIGNMENTS = ['lawful_good', 'neutral_good', 'chaotic_good', 'lawful_neutral', 'neutral', 'chaotic_neutral', 'lawful_evil', 'neutral_evil', 'chaotic_evil'];
+    const SIZES = ['tiny', 'small', 'medium', 'large', 'huge', 'gargantuan', 'colossal'];
+    const COINS = ['cp', 'sp', 'ep', 'gp', 'pp'];
+    const COINS_VALUES = [0, 50, 100, 150, 200];
     
     private $locale;
     
@@ -148,6 +151,16 @@ class RpgProvider extends Base
         return $this->generator->randomElement(self::ALIGNMENTS);
     }
     
+    public function coins(): array{
+        return array_combine(self::COINS, [
+            $this->generator->randomElement(self::COINS_VALUES),
+            $this->generator->randomElement(self::COINS_VALUES),
+            $this->generator->randomElement(self::COINS_VALUES),
+            $this->generator->randomElement(self::COINS_VALUES),
+            $this->generator->randomElement(self::COINS_VALUES),
+        ]);
+    }
+    
     public function character($race = null, $type = null, $class = null, $abilities_method = 'default'): array{
         $race ??= $this->characterRaceKey();
         $class ??= $this->characterClassKey();
@@ -162,6 +175,7 @@ class RpgProvider extends Base
             'abilities' => $this->characterAbilities($abilities_method),
             'proficiencies' => $this->characterProficiencies(),
             'alignment' => $this->characterAlignment(),
+            'coins' => $this->coins(),
         ];
     }
     
