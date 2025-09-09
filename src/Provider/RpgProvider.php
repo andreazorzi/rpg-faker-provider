@@ -10,6 +10,28 @@ class RpgProvider extends Base
 {
     use CharacterName;
     
+    const ABILITIES = ["str", "dex", "con", "int", "wis", "cha"];
+    const SKILLS = [
+        'acrobatics',
+        'animal_handling',
+        'arcana',
+        'athletics',
+        'deception',
+        'history',
+        'insight',
+        'intimidation',
+        'investigation',
+        'medicine',
+        'nature',
+        'perception',
+        'performance',
+        'persuasion',
+        'religion',
+        'sleight_of_hand',
+        'stealth',
+        'survival',
+    ];
+    
     private $locale;
     
     public function __construct($generator, $locale = null){
@@ -121,6 +143,13 @@ class RpgProvider extends Base
         ];
     }
     
+    public function characterProficiencies(): array{
+        return [
+            'abilities' => $this->generator->randomElements(self::ABILITIES, 2),
+            'skills' => $this->generator->randomElements(self::SKILLS, 4),
+        ];
+    }
+    
     public function character($race = null, $type = null, $class = null, $abilities_method = "default"): array{
         $race ??= $this->characterRaceKey();
         $class ??= $this->characterClassKey();
@@ -133,6 +162,7 @@ class RpgProvider extends Base
             'class' => $this->characterClass($class),
             'level' => $this->characterLevel(),
             'abilities' => $this->characterAbilities($abilities_method),
+            'proficiencies' => $this->characterProficiencies(),
         ];
     }
     
