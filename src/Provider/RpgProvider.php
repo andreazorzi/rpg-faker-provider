@@ -90,7 +90,7 @@ class RpgProvider extends Base
         return $this->generator->numberBetween($min, $max);
     }
     
-    public function characterStats($method = "default"){
+    public function characterAbilities($method = "default"){
         $values = [15, 14, 13, 12, 10, 8];
         
         if($method == "default"){
@@ -121,7 +121,7 @@ class RpgProvider extends Base
         ];
     }
     
-    public function character($race = null, $type = null, $class = null, $stats_method = "default"): array{
+    public function character($race = null, $type = null, $class = null, $abilities_method = "default"): array{
         $race ??= $this->characterRaceKey();
         $class ??= $this->characterClassKey();
         
@@ -132,7 +132,7 @@ class RpgProvider extends Base
             'class_key' => $class,
             'class' => $this->characterClass($class),
             'level' => $this->characterLevel(),
-            'stats' => $this->characterStats($stats_method),
+            'abilities' => $this->characterAbilities($abilities_method),
         ];
     }
     
