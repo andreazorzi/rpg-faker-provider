@@ -90,7 +90,38 @@ class RpgProvider extends Base
         return $this->generator->numberBetween($min, $max);
     }
     
-    public function character($race = null, $type = null, $class = null): array{
+    public function characterStats($method = "default"){
+        $values = [15, 14, 13, 12, 10, 8];
+        
+        if($method == "default"){
+            $values = $this->generator->shuffle($values);
+        }
+        else if($method == "roll"){
+            $values = [];
+            
+            for($i = 0; $i < 6; $i++){
+                $rolls = [
+                    $this->generator->numberBetween(1, 6),
+                    $this->generator->numberBetween(1, 6),
+                    $this->generator->numberBetween(1, 6),
+                    $this->generator->numberBetween(1, 6),
+                ];
+                
+                $values[] = array_sum($rolls) - min($rolls);
+            }
+        }
+        
+        return [
+            'str' => $values[0],
+            'dex' => $values[1],
+            'con' => $values[2],
+            'int' => $values[3],
+            'wis' => $values[4],
+            'cha' => $values[5],
+        ];
+    }
+    
+    public function character($race = null, $type = null, $class = null, $stats_method = "default"): array{
         $race ??= $this->characterRaceKey();
         $class ??= $this->characterClassKey();
         
@@ -101,6 +132,7 @@ class RpgProvider extends Base
             'class_key' => $class,
             'class' => $this->characterClass($class),
             'level' => $this->characterLevel(),
+            'stats' => $this->characterStats($stats_method),
         ];
     }
     
