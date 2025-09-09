@@ -58,27 +58,44 @@ class RpgProvider extends Base
         return trim($this->characterFirstName($race, $type).' '.$this->characterLastName($race) ?? '');
     }
     
-    public function characterRace($race = null): string{
-        $class = $this->getLocaleProviderClass("CharacterRace");
-        
-        if(!is_null($race)) return $class::getRaces()[$race];
-        
-        return $this->generator->randomElement($class::getRaces());
-    }
-    
     public function characterRaceKey(): string{
-        $class = $this->getLocaleProviderClass("CharacterRace");
+        $translated_class = $this->getLocaleProviderClass("CharacterRace");
         
-        return $this->generator->randomElement(array_keys($class::getRaces()));
+        return $this->generator->randomElement(array_keys($translated_class::getRaces()));
     }
     
-    public function character($race = null, $type = null): array{
+    public function characterRace($race = null): string{
+        $translated_class = $this->getLocaleProviderClass("CharacterRace");
+        
+        if(!is_null($race)) return $translated_class::getRaces()[$race];
+        
+        return $this->generator->randomElement($translated_class::getRaces());
+    }
+    
+    public function characterClassKey(): string{
+        $translated_class = $this->getLocaleProviderClass("CharacterClass");
+        
+        return $this->generator->randomElement(array_keys($translated_class::getClasses()));
+    }
+    
+    public function characterClass($class = null): string{
+        $translated_class = $this->getLocaleProviderClass("CharacterClass");
+        
+        if(!is_null($class)) return $translated_class::getClasses()[$class];
+        
+        return $this->generator->randomElement($translated_class::getClasses());
+    }
+    
+    public function character($race = null, $type = null, $class = null): array{
         $race ??= $this->characterRaceKey();
+        $class ??= $this->characterClassKey();
         
         return [
             'name' => $this->characterName($race, $type),
             'race_key' => $race,
             'race' => $this->characterRace($race),
+            'class_key' => $class,
+            'class' => $this->characterClass($class)
         ];
     }
     
