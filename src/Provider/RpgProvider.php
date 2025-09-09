@@ -10,7 +10,7 @@ class RpgProvider extends Base
 {
     use CharacterName;
     
-    const ABILITIES = ["str", "dex", "con", "int", "wis", "cha"];
+    const ABILITIES = ['cha', 'con', 'dex', 'int', 'str', 'wis'];
     const SKILLS = [
         'acrobatics',
         'animal_handling',
@@ -31,6 +31,7 @@ class RpgProvider extends Base
         'stealth',
         'survival',
     ];
+    const ALIGNMENTS = ['lawful_good', 'neutral_good', 'chaotic_good', 'lawful_neutral', 'neutral', 'chaotic_neutral', 'lawful_evil', 'neutral_evil', 'chaotic_evil'];
     
     private $locale;
     
@@ -43,8 +44,8 @@ class RpgProvider extends Base
     public function characterFirstName($race = null, $type = null): string{
         $names = [];
         
-        if($race == "half-elf"){
-            $race = $this->generator->randomElement(["elf", "human"]);
+        if($race == 'half-elf'){
+            $race = $this->generator->randomElement(['elf', 'human']);
         }
         
         foreach(self::getNames() as $race_key => $race_names){
@@ -63,8 +64,8 @@ class RpgProvider extends Base
     public function characterLastName($race = null): ?string{
         $surnames = [];
         
-        if($race == "half-elf"){
-            $race = $this->generator->randomElement(["elf", "human"]);
+        if($race == 'half-elf'){
+            $race = $this->generator->randomElement(['elf', 'human']);
         }
         
         foreach(self::getSurname() as $race_key => $race_surnames){
@@ -81,13 +82,13 @@ class RpgProvider extends Base
     }
     
     public function characterRaceKey(): string{
-        $translated_class = $this->getLocaleProviderClass("CharacterRace");
+        $translated_class = $this->getLocaleProviderClass('CharacterRace');
         
         return $this->generator->randomElement(array_keys($translated_class::getRaces()));
     }
     
     public function characterRace($race = null): string{
-        $translated_class = $this->getLocaleProviderClass("CharacterRace");
+        $translated_class = $this->getLocaleProviderClass('CharacterRace');
         
         if(!is_null($race)) return $translated_class::getRaces()[$race];
         
@@ -95,13 +96,13 @@ class RpgProvider extends Base
     }
     
     public function characterClassKey(): string{
-        $translated_class = $this->getLocaleProviderClass("CharacterClass");
+        $translated_class = $this->getLocaleProviderClass('CharacterClass');
         
         return $this->generator->randomElement(array_keys($translated_class::getClasses()));
     }
     
     public function characterClass($class = null): string{
-        $translated_class = $this->getLocaleProviderClass("CharacterClass");
+        $translated_class = $this->getLocaleProviderClass('CharacterClass');
         
         if(!is_null($class)) return $translated_class::getClasses()[$class];
         
@@ -112,13 +113,13 @@ class RpgProvider extends Base
         return $this->generator->numberBetween($min, $max);
     }
     
-    public function characterAbilities($method = "default"){
+    public function characterAbilities($method = 'default'){
         $values = [15, 14, 13, 12, 10, 8];
         
-        if($method == "default"){
+        if($method == 'default'){
             $values = $this->generator->shuffle($values);
         }
-        else if($method == "roll"){
+        else if($method == 'roll'){
             $values = [];
             
             for($i = 0; $i < 6; $i++){
@@ -133,14 +134,7 @@ class RpgProvider extends Base
             }
         }
         
-        return [
-            'str' => $values[0],
-            'dex' => $values[1],
-            'con' => $values[2],
-            'int' => $values[3],
-            'wis' => $values[4],
-            'cha' => $values[5],
-        ];
+        return array_combine(self::ABILITIES, $values);
     }
     
     public function characterProficiencies(): array{
@@ -150,7 +144,11 @@ class RpgProvider extends Base
         ];
     }
     
-    public function character($race = null, $type = null, $class = null, $abilities_method = "default"): array{
+    public function characterAlignment(): string{
+        return $this->generator->randomElement(self::ALIGNMENTS);
+    }
+    
+    public function character($race = null, $type = null, $class = null, $abilities_method = 'default'): array{
         $race ??= $this->characterRaceKey();
         $class ??= $this->characterClassKey();
         
@@ -163,6 +161,7 @@ class RpgProvider extends Base
             'level' => $this->characterLevel(),
             'abilities' => $this->characterAbilities($abilities_method),
             'proficiencies' => $this->characterProficiencies(),
+            'alignment' => $this->characterAlignment(),
         ];
     }
     
