@@ -86,6 +86,10 @@ class RpgProvider extends Base
         return $this->generator->randomElement($translated_class::getClasses());
     }
     
+    public function characterLevel($min = 1, $max = 20): int{
+        return $this->generator->numberBetween($min, $max);
+    }
+    
     public function character($race = null, $type = null, $class = null): array{
         $race ??= $this->characterRaceKey();
         $class ??= $this->characterClassKey();
@@ -95,7 +99,8 @@ class RpgProvider extends Base
             'race_key' => $race,
             'race' => $this->characterRace($race),
             'class_key' => $class,
-            'class' => $this->characterClass($class)
+            'class' => $this->characterClass($class),
+            'level' => $this->characterLevel(),
         ];
     }
     
