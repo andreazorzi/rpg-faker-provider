@@ -1,6 +1,24 @@
 {
     "name": "andreazorzi/rpg-faker-provider",
-    "description": "FakerPHP provider for RPG character generation with multi-language support",
+    "version": "1.0.0",
+    "description": "A PHP Faker provider that generates random RPG characters based on Dungeons & Dragons 5th Edition.",
+    "keywords": [
+        "Andrea Zorzi",
+        "php",
+        "faker",
+        "faker-php",
+        "dnd",
+        "dnd-5e",
+        "dungeons-and-dragons",
+        "dungeons-and-dragons-5th-edition",
+        "rpg",
+        "rpg-faker",
+        "rpg-faker-provider",
+        "rpg-character",
+        "rpg-character-generator",
+        "dnd-character"
+    ],
+    "homepage": "https://github.com/andreazorzi/rpg-faker-provider",
     "type": "library",
     "license": "MIT",
     "autoload": {
