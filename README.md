@@ -6,7 +6,7 @@ A PHP Faker provider that generates random RPG characters based on Dungeons & Dr
 
 ## Installation
 ```bash
-composer require  @andreazorzi/rpg-faker-provider
+composer require andreazorzi/rpg-faker-provider
 ```
 
 ## Usage
