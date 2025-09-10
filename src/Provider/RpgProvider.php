@@ -4,33 +4,15 @@ namespace FakerRpg\Provider;
 
 use Exception;
 use Faker\Provider\Base;
+use FakerRpg\Traits\CharacterInfo;
 use FakerRpg\Traits\CharacterName;
 
 class RpgProvider extends Base
 {
-    use CharacterName;
+    use CharacterName, CharacterInfo;
     
     const ABILITIES = ['cha', 'con', 'dex', 'int', 'str', 'wis'];
-    const SKILLS = [
-        'acrobatics',
-        'animal_handling',
-        'arcana',
-        'athletics',
-        'deception',
-        'history',
-        'insight',
-        'intimidation',
-        'investigation',
-        'medicine',
-        'nature',
-        'perception',
-        'performance',
-        'persuasion',
-        'religion',
-        'sleight_of_hand',
-        'stealth',
-        'survival',
-    ];
+    const SKILLS = ['acrobatics', 'animal_handling', 'arcana', 'athletics', 'deception', 'history', 'insight', 'intimidation', 'investigation', 'medicine', 'nature', 'perception', 'performance', 'persuasion', 'religion', 'sleight_of_hand', 'stealth', 'survival',];
     const ALIGNMENTS = ['lawful_good', 'neutral_good', 'chaotic_good', 'lawful_neutral', 'neutral', 'chaotic_neutral', 'lawful_evil', 'neutral_evil', 'chaotic_evil'];
     const SIZES = ['tiny', 'small', 'medium', 'large', 'huge', 'gargantuan', 'colossal'];
     const COINS = ['cp', 'sp', 'ep', 'gp', 'pp'];
@@ -151,7 +133,7 @@ class RpgProvider extends Base
         return $this->generator->randomElement(self::ALIGNMENTS);
     }
     
-    public function coins(): array{
+    public function characterCoins(): array{
         return array_combine(self::COINS, [
             $this->generator->randomElement(self::COINS_VALUES),
             $this->generator->randomElement(self::COINS_VALUES),
@@ -159,6 +141,22 @@ class RpgProvider extends Base
             $this->generator->randomElement(self::COINS_VALUES),
             $this->generator->randomElement(self::COINS_VALUES),
         ]);
+    }
+    
+    public function characterAge($race = null): int{
+        [$min, $max] = self::getRaceAges($race);
+        
+        return $this->generator->numberBetween($min, $max);
+    }
+    
+    public function characterSize($race = null): float{
+        [$min, $max] = self::getRaceSizes($race);
+        
+        return $this->generator->randomFloat(1, $min, $max);
+    }
+    
+    public function characterSpeed($race = null): float{
+        return self::getRaceSpeed($race);
     }
     
     public function character($race = null, $type = null, $class = null, $abilities_method = 'default'): array{
@@ -175,7 +173,10 @@ class RpgProvider extends Base
             'abilities' => $this->characterAbilities($abilities_method),
             'proficiencies' => $this->characterProficiencies(),
             'alignment' => $this->characterAlignment(),
-            'coins' => $this->coins(),
+            'age' => $this->characterAge($race),
+            'size' => $this->characterSize($race),
+            'speed' => $this->characterSpeed($race),
+            'coins' => $this->characterCoins(),
         ];
     }
     
