@@ -26,7 +26,7 @@ class RpgProvider extends Base
         $this->locale = $locale;
     }
     
-    public function characterFirstName($race = null, $type = null): string{
+    public function characterFirstName($race = null, $gender = null): string{
         $names = [];
         
         if($race == 'half-elf'){
@@ -36,10 +36,10 @@ class RpgProvider extends Base
         foreach(self::getNames() as $race_key => $race_names){
             if(!is_null($race) && $race != $race_key) continue;
             
-            foreach($race_names ?? [] as $type_key => $type_names){
-                if(!is_null($type) && $type != $type_key) continue;
+            foreach($race_names ?? [] as $gender_key => $gender_names){
+                if(!is_null($gender) && $gender != $gender_key) continue;
                 
-                $names = array_merge($names, $type_names);
+                $names = array_merge($names, $gender_names);
             }
         }
         
@@ -62,8 +62,8 @@ class RpgProvider extends Base
         return $this->generator->randomElement($surnames);
     }
     
-    public function characterName($race = null, $type = null): string{
-        return trim($this->characterFirstName($race, $type).' '.$this->characterLastName($race) ?? '');
+    public function characterName($race = null, $gender = null): string{
+        return trim($this->characterFirstName($race, $gender).' '.$this->characterLastName($race) ?? '');
     }
     
     public function characterRaceKey(): string{
@@ -159,12 +159,12 @@ class RpgProvider extends Base
         return self::getRaceSpeed($race);
     }
     
-    public function character($race = null, $type = null, $class = null, $abilities_method = 'default'): array{
+    public function character($race = null, $gender = null, $class = null, $abilities_method = 'default'): array{
         $race ??= $this->characterRaceKey();
         $class ??= $this->characterClassKey();
         
         return [
-            'name' => $this->characterName($race, $type),
+            'name' => $this->characterName($race, $gender),
             'race_key' => $race,
             'race' => $this->characterRace($race),
             'class_key' => $class,

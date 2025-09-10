@@ -17,7 +17,7 @@ trait CharacterName
                     'Patrin', 'Rhogar', 'Shamash', 'Shedinn', 'Tarhun', 'Torinn',
                 ],
                 'female' => [
-                    'Akra', 'Biri', 'Daar', 'Farideh', 'Harann'.
+                    'Akra', 'Biri', 'Daar', 'Farideh', 'Harann',
                     'HaviJar', 'Jheri', 'Kava', 'Korinn', 'Mishann', 'NaJa', 'Perra',
                     'Raiann', 'Sora', 'Surina', 'Thava', 'Uadjit',
                 ]
@@ -51,7 +51,7 @@ trait CharacterName
                     'Rolen', 'Soveliss', 'Thamior', 'Tharivol', 'Theren', 'Varis',
                 ],
                 'female' => [
-                    'Adrie', 'Althaea. Anastrianna',
+                    'Adrie', 'Althaea', 'Anastrianna',
                     'Andraste', 'Antinua', 'Bethrynna', 'Birel', 'Caelynn', 'Drusilia',
                     'Enna', 'Felosial', 'Ielenia', 'Jelenneth', 'Keyleth', 'Leshanna',
                     'Lia', 'Meriele', 'Mialee', 'Naivara', 'Quelenna', 'Quillathe',
@@ -105,10 +105,10 @@ trait CharacterName
                     'Aoth', 'Bareris', 'Ehput-Ki', 'Kethoth', 'Mumed', 'Ramas', 'So-Kehur', 'Thazar-De', 'Urhur',
                     'Borivik', 'Faurgar', 'Jandar', 'Kanithar', 'Madislak', 'Ralmevik', 'Shaumar', 'Vladislak',
                     'An', 'Chen', 'Chi', 'Fai', 'Jiang', 'Jun', 'Lian', 'Long', 'Meng', 'On', 'Shan', 'Shui', 'Wen',
-                    'Anton', 'Diero. Marcon', 'Pieron', 'Rimardo', 'Romero', 'Salazar', 'Umbero',
+                    'Anton', 'Diero', 'Marcon', 'Pieron', 'Rimardo', 'Romero', 'Salazar', 'Umbero',
                 ],
                 'female' => [
-                    'Alala', 'Ceidil. Hama', 'Jasmal', 'Meilil', 'Seipora', 'Yasheira', 'Zasheida',
+                    'Alala', 'Ceidil', 'Hama', 'Jasmal', 'Meilil', 'Seipora', 'Yasheira', 'Zasheida',
                     'Arveene', 'Esvele', 'Jhessail', 'Kerri', 'Lureene', 'Miri', 'Rowan', 'Shandri', 'Tessele',
                     'Alethra', 'Kara', 'Katernin', 'Mara', 'Natali', 'Olma', 'Tana', 'Zora',
                     'Amafrey', 'Betha', 'Cefrey', 'Kethra', 'Mara', 'Olga', 'Silifrey', 'Westra',
