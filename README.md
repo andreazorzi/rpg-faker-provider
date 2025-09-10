@@ -1,4 +1,6 @@
 # RPG Faker Provider
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/andreazorzi/rpg-faker-provider.svg?style=flat-square)](https://packagist.org/packages/andreazorzi/rpg-faker-provider)
+[![Total Downloads](https://img.shields.io/packagist/dt/andreazorzi/rpg-faker-provider.svg?style=flat-square)](https://packagist.org/packages/andreazorzi/rpg-faker-provider)
 A PHP Faker provider that generates random RPG characters based on Dungeons & Dragons 5th Edition.
 
 ## Installation
