@@ -14,6 +14,7 @@ class RpgProvider extends Base
     const ABILITIES = ['cha', 'con', 'dex', 'int', 'str', 'wis'];
     const SKILLS = ['acrobatics', 'animal_handling', 'arcana', 'athletics', 'deception', 'history', 'insight', 'intimidation', 'investigation', 'medicine', 'nature', 'perception', 'performance', 'persuasion', 'religion', 'sleight_of_hand', 'stealth', 'survival',];
     const ALIGNMENTS = ['lawful_good', 'neutral_good', 'chaotic_good', 'lawful_neutral', 'neutral', 'chaotic_neutral', 'lawful_evil', 'neutral_evil', 'chaotic_evil'];
+    const BACKGROUNDS = ['acolyte', 'charlatan', 'criminal', 'entertainer', 'folk_hero', 'guild-artisan', 'hermit', 'noble', 'sage', 'sailor', 'soldier', 'outlander', 'urchin'];
     const SIZES = ['tiny', 'small', 'medium', 'large', 'huge', 'gargantuan', 'colossal'];
     const COINS = ['cp', 'sp', 'ep', 'gp', 'pp'];
     const COINS_VALUES = [0, 50, 100, 150, 200];
@@ -96,6 +97,20 @@ class RpgProvider extends Base
         return $this->generator->randomElement($translated_class::getClasses());
     }
     
+    public function characterBackgroundKey(): string{
+        $translated_class = $this->provider;
+        
+        return $this->generator->randomElement(array_keys($translated_class::getBackgrounds()));
+    }
+    
+    public function characterBackground($background = null): string{
+        $translated_class = $this->provider;
+        
+        if(!is_null($background)) return $translated_class::getBackgrounds()[$background];
+        
+        return $this->generator->randomElement($translated_class::getBackgrounds());
+    }
+    
     public function characterLevel($min = 1, $max = 20): int{
         return $this->generator->numberBetween($min, $max);
     }
@@ -172,6 +187,7 @@ class RpgProvider extends Base
     public function character($race = null, $gender = null, $class = null, $abilities_method = 'default'): array{
         $race ??= $this->characterRaceKey();
         $class ??= $this->characterClassKey();
+        $background ??= $this->characterBackgroundKey();
         
         return [
             'name' => $this->characterName($race, $gender),
@@ -179,6 +195,8 @@ class RpgProvider extends Base
             'race' => $this->characterRace($race),
             'class_key' => $class,
             'class' => $this->characterClass($class),
+            'background_key' => $background,
+            'background' => $this->characterBackground($background),
             'level' => $this->characterLevel(),
             'abilities' => $this->characterAbilities($abilities_method),
             'proficiencies' => $this->characterProficiencies(),

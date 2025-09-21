@@ -34,4 +34,22 @@ class Character
             'tiefling' => 'Tiefling',
         ];
     }
+    
+    public static function getBackgrounds(): array{
+        return [
+            'acolyte' => 'Accolito',
+            'charlatan' => 'Ciarlatano',
+            'criminal' => 'Criminale',
+            'entertainer' => 'Intrattenitore',
+            'folk_hero' => 'Eroe Popolare',
+            'guild-artisan' => 'Artigiano di Gilda',
+            'hermit' => 'Eremita',
+            'noble' => 'Nobile',
+            'sage' => 'Sapiente',
+            'sailor' => 'Marinaio',
+            'soldier' => 'Soldato',
+            'outlander' => 'Forestiero',
+            'urchin' => 'Monello',
+        ];
+    }
 }
