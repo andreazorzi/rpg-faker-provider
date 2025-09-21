@@ -1,6 +1,6 @@
 {
     "name": "andreazorzi/rpg-faker-provider",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A PHP Faker provider that generates random RPG characters based on Dungeons & Dragons 5th Edition.",
     "keywords": [
         "Andrea Zorzi",
