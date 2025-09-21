@@ -149,8 +149,16 @@ class RpgProvider extends Base
         return $this->generator->numberBetween($min, $max);
     }
     
-    public function characterSize($race = null): float{
-        [$min, $max] = self::getRaceSizes($race);
+    public function characterSize($race = null): string{
+        if(!is_null($race)){
+            return self::getRaceSize($race);
+        }
+        
+        return $this->generator->randomElement(self::SIZES);
+    }
+    
+    public function characterHeight($race = null): float{
+        [$min, $max] = self::getRaceHeight($race);
         
         return $this->generator->randomFloat(1, $min, $max);
     }
@@ -175,6 +183,7 @@ class RpgProvider extends Base
             'alignment' => $this->characterAlignment(),
             'age' => $this->characterAge($race),
             'size' => $this->characterSize($race),
+            'height' => $this->characterHeight($race),
             'speed' => $this->characterSpeed($race),
             'coins' => $this->characterCoins(),
         ];

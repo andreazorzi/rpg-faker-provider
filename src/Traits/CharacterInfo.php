@@ -20,7 +20,23 @@ trait CharacterInfo
         return $ages[$race] ?? $ages['human'];
     }
     
-    public static function getRaceSizes($race = null): array{
+    public static function getRaceSize($race = null): string{
+        $size = [
+            'dragonborn' => 'medium',
+            'dwarf' => 'medium',
+            'elf' => 'medium',
+            'gnome' => 'small',
+            'halfling' => 'small',
+            'half-elf' => 'medium',
+            'half-orc' => 'medium',
+            'human' => 'medium',
+            'tiefling' => 'medium',
+        ];
+        
+        return $size[$race] ?? $size['human'];
+    }
+    
+    public static function getRaceHeight($race = null): array{
         $sizes = [
             'dragonborn' => [1.8, 2.2],
             'dwarf' => [1.2, 1.5],
