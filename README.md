@@ -54,6 +54,8 @@ $character = $faker->character(abilities_method: 'roll');
     'race' => 'Elf',
     'class_key' => 'wizard',
     'class' => 'Wizard',
+    'background_key' => 'sage',
+    'background' => 'Sage',
     'level' => 5,
     'abilities' => [
         'cha' => 12,
@@ -130,6 +132,14 @@ $class = $faker->characterClass();     // "Fighter"
 $classKey = $faker->characterClassKey(); // "fighter"
 ```
 
+### Background
+`characterBackground($background = null)` / `characterBackgroundKey()`
+
+```php
+$background = $faker->characterBackground();     // "Acolyte"
+$backgroundKey = $faker->characterBackgroundKey(); // "acolyte"
+```
+
 ### Attributes
 #### Level
 `characterLevel($min = 1, $max = 20)`
@@ -175,12 +185,21 @@ $age = $faker->characterAge('elf');  // Random age appropriate for elves
 ```
 
 #### Size
-Returns height in meters.
+Returns size.
 `characterSize($race = null)`
 
 ```php
-$size = $faker->characterSize();        // 1.7
-$size = $faker->characterSize('dwarf'); // 1.1
+$size = $faker->characterSize();        // gargantuan
+$size = $faker->characterSize('dwarf'); // medium
+```
+
+#### Height
+Returns height in meters.
+`characterHeight($race = null)`
+
+```php
+$height = $faker->characterHeight();        // gargantuan
+$height = $faker->characterHeight('dwarf'); // medium
 ```
 
 #### Speed
