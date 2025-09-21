@@ -19,11 +19,13 @@ class RpgProvider extends Base
     const COINS_VALUES = [0, 50, 100, 150, 200];
     
     private $locale;
+    private $provider;
     
     public function __construct($generator, $locale = null){
         parent::__construct($generator);
         
         $this->locale = $locale;
+        $this->provider = $this->getLocaleProviderClass('Character');
     }
     
     public function characterFirstName($race = null, $gender = null): string{
@@ -67,13 +69,13 @@ class RpgProvider extends Base
     }
     
     public function characterRaceKey(): string{
-        $translated_class = $this->getLocaleProviderClass('CharacterRace');
+        $translated_class = $this->provider;
         
         return $this->generator->randomElement(array_keys($translated_class::getRaces()));
     }
     
     public function characterRace($race = null): string{
-        $translated_class = $this->getLocaleProviderClass('CharacterRace');
+        $translated_class = $this->provider;
         
         if(!is_null($race)) return $translated_class::getRaces()[$race];
         
@@ -81,13 +83,13 @@ class RpgProvider extends Base
     }
     
     public function characterClassKey(): string{
-        $translated_class = $this->getLocaleProviderClass('CharacterClass');
+        $translated_class = $this->provider;
         
         return $this->generator->randomElement(array_keys($translated_class::getClasses()));
     }
     
     public function characterClass($class = null): string{
-        $translated_class = $this->getLocaleProviderClass('CharacterClass');
+        $translated_class = $this->provider;
         
         if(!is_null($class)) return $translated_class::getClasses()[$class];
         
