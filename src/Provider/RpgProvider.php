@@ -12,7 +12,9 @@ class RpgProvider extends Base
     use CharacterName, CharacterInfo;
     
     const ABILITIES = ['cha', 'con', 'dex', 'int', 'str', 'wis'];
-    const SKILLS = ['acrobatics', 'animal_handling', 'arcana', 'athletics', 'deception', 'history', 'insight', 'intimidation', 'investigation', 'medicine', 'nature', 'perception', 'performance', 'persuasion', 'religion', 'sleight_of_hand', 'stealth', 'survival',];
+    const SKILLS = ['acrobatics', 'animal_handling', 'arcana', 'athletics', 'deception', 'history', 'insight', 'intimidation', 'investigation', 'medicine', 'nature', 'perception', 'performance', 'persuasion', 'religion', 'sleight_of_hand', 'stealth', 'survival'];
+    const RACES = ['dragonborn', 'dwarf', 'elf', 'gnome', 'half-elf', 'halfling', 'half-orc', 'human', 'tiefling'];
+    const CLASSES = ['barbarian', 'bard', 'cleric', 'druid', 'fighter', 'monk', 'paladin', 'ranger', 'rogue', 'sorcerer', 'warlock', 'wizard'];
     const ALIGNMENTS = ['lawful_good', 'neutral_good', 'chaotic_good', 'lawful_neutral', 'neutral', 'chaotic_neutral', 'lawful_evil', 'neutral_evil', 'chaotic_evil'];
     const BACKGROUNDS = ['acolyte', 'charlatan', 'criminal', 'entertainer', 'folk_hero', 'guild-artisan', 'hermit', 'noble', 'sage', 'sailor', 'soldier', 'outlander', 'urchin'];
     const SIZES = ['tiny', 'small', 'medium', 'large', 'huge', 'gargantuan', 'colossal'];
@@ -70,45 +72,33 @@ class RpgProvider extends Base
     }
     
     public function characterRaceKey(): string{
-        $translated_class = $this->provider;
-        
-        return $this->generator->randomElement(array_keys($translated_class::getRaces()));
+        return $this->generator->randomElement(self::RACES);
     }
     
     public function characterRace($race = null): string{
-        $translated_class = $this->provider;
+        if(!is_null($race)) return $this->provider::getRaces()[$race];
         
-        if(!is_null($race)) return $translated_class::getRaces()[$race];
-        
-        return $this->generator->randomElement($translated_class::getRaces());
+        return $this->generator->randomElement($this->provider::getRaces());
     }
     
     public function characterClassKey(): string{
-        $translated_class = $this->provider;
-        
-        return $this->generator->randomElement(array_keys($translated_class::getClasses()));
+        return $this->generator->randomElement(self::CLASSES);
     }
     
     public function characterClass($class = null): string{
-        $translated_class = $this->provider;
+        if(!is_null($class)) return $this->provider::getClasses()[$class];
         
-        if(!is_null($class)) return $translated_class::getClasses()[$class];
-        
-        return $this->generator->randomElement($translated_class::getClasses());
+        return $this->generator->randomElement($this->provider::getClasses());
     }
     
     public function characterBackgroundKey(): string{
-        $translated_class = $this->provider;
-        
-        return $this->generator->randomElement(array_keys($translated_class::getBackgrounds()));
+        return $this->generator->randomElement(self::BACKGROUNDS);
     }
     
     public function characterBackground($background = null): string{
-        $translated_class = $this->provider;
+        if(!is_null($background)) return $this->provider::getBackgrounds()[$background];
         
-        if(!is_null($background)) return $translated_class::getBackgrounds()[$background];
-        
-        return $this->generator->randomElement($translated_class::getBackgrounds());
+        return $this->generator->randomElement($this->provider::getBackgrounds());
     }
     
     public function characterLevel($min = 1, $max = 20): int{
